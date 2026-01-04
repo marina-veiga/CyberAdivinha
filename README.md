@@ -24,9 +24,9 @@ Toda a lógica principal é executada no daemon.
 
 # Estrutura do Projeto
 
-bash
+```bash
 CyberAdivinha-main/
-│
+│ 
 ├── LICENSE            # Licença do projeto
 ├── Makefile           # Script de compilação
 ├── README.md          # Documentação do projeto
@@ -34,7 +34,7 @@ CyberAdivinha-main/
 ├── cliente.c          # Código-fonte do cliente em C
 ├── daemon             # Executável do daemon
 └── daemon.S           # Código-fonte do daemon em Assembly
-
+```
 Requisitos
 Para compilar e executar o projeto, é necessário:
 
@@ -130,7 +130,7 @@ Uso de Makefile
 Disciplina: Arquitetura de Computadores
 
 Trabalho Final
-
+```
 Autores
 Projeto desenvolvido para fins acadêmicos.
 Diogo Costa e Marina Nascimento Veiga
