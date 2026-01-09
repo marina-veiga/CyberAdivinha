@@ -119,7 +119,7 @@ Em outro terminal:
 
 ### Execução do Daemon (Assembly)
 
-```bash
+```text
 $ ./daemon
 === Jogo: Adivinhe o Numero ===
 PID: 5284
@@ -128,7 +128,7 @@ Jogo iniciado!
 ```
 ### Execução do Cliente (C)
 
-```bash
+```text
 $ ./cliente
 === Jogo: Adivinhe o Número ===
 Informe o PID do processo daemon: 5284
@@ -151,17 +151,17 @@ Dica: tente um numero MAIOR
 
 ### Solicitação de Status do Jogo
 Cliente:
-```bash
+```text
 opcao: 4
 Solicitacao de status enviada!
 ```
 Daemon:
-```bash
+```text
 Status: jogo em execucao | aguardando palpites
 ```
 
 ### Exemplo de Acerto
-```bash
+```text
 Voce acertou!
 Tentativas: 7
 ```
