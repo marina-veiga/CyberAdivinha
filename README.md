@@ -85,7 +85,7 @@ Após a compilação, serão gerados os seguintes arquivos:
 ## Como Executar
 A execução do programa ocorre em dois terminais, pois o cliente e o daemon são processos distintos.
 
-Passo 1 – Executar o daemon
+### Passo 1 – Executar o daemon
 Em um terminal:
 
 ```bash
@@ -93,14 +93,14 @@ Em um terminal:
 ```
 O daemon ficará em execução aguardando conexões do cliente.
 
-Passo 2 – Executar o cliente
+### Passo 2 – Executar o cliente
 Em outro terminal:
 
 ```bash
 ./cliente
 ```
 
-Passo 3 – Jogar
+### Passo 3 – Jogar
 - Siga as instruções exibidas no terminal
 - Digite os valores solicitados
 - O jogo responderá conforme o estado controlado pelo daemon
