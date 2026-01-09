@@ -66,12 +66,12 @@ sudo apt install build-essential
 ## Como Compilar
 A compilação é feita automaticamente utilizando o Makefile.
 
-Passo 1 – Acessar o diretório do projeto
+### Passo 1 – Acessar o diretório do projeto
 ```bash
 cd CyberAdivinha-main
 ```
 
-Passo 2 – Compilar o projeto
+### Passo 2 – Compilar o projeto
 ```bash
 make
 ```
