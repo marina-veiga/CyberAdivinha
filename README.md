@@ -1,27 +1,28 @@
 # CyberAdivinha
 ## Descrição
-Trabalho final de Arquitetura de Computadores. Um jogo de adivinhar números que mostra na prática a comunicação entre processos via sinais Unix, com um daemon em Assembly x86-64 e um cliente em C, explorando máquinas de estados e programação de baixo nível.
+CyberAdivinha é um jogo de adivinhação de números desenvolvido como trabalho final da disciplina de Arquitetura de Computadores da Universidade Federal do Maranhão (UFMA), com foco em programação de baixo nível e comunicação entre processos. O projeto tem como objetivo demonstrar, na prática, conceitos fundamentais de programação de baixo nível, comunicação entre processos e integração entre C e Assembly em ambiente Linux. A aplicação é composta por dois programas independentes: um daemon implementado em Assembly x86-64, responsável por toda a lógica do jogo, e um cliente implementado em C, que faz a interação direta com o usuário. A comunicação entre esses dois processos ocorre por meio de sinais Unix, permitindo observar como processos distintos podem cooperar e trocar informações dentro do sistema operacional.
 
-# Objetivo do Projeto
+## Objetivo do Projeto
 
-Aplicar na prática conceitos estudados em Arquitetura de Computadores, incluindo:
+Aplicar conceitos vistos ao longo da disciplina, como:
 
-Programação em baixo nível  
-Integração entre C e Assembly  
-Controle de fluxo por máquina de estados  
-Execução de processos independentes  
-Comunicação entre cliente e daemon em ambiente Linux  
+- Programação em baixo nível  
+- Integração entre C e Assembly
+- Controle de fluxo por máquina de estados  
+- Execução de processos independentes  
+- Comunicação entre cliente e daemon em ambiente Linux  
 
-# Descrição do Jogo
+## Como Funciona o Jogo
 
 O CyberAdivinha é um jogo interativo de adivinhação de números.
 
-Um daemon é responsável por gerar e controlar o número secreto e os estados do jogo  
-O cliente realiza a interação com o usuário  
-O jogador tenta adivinhar o número gerado pelo sistema  
-O jogo finaliza quando o número correto é descoberto  
+- O daemon inicia o jogo e gera um número secreto  
+- Toda a lógica e o controle de estados ficam no daemon  
+- O cliente é responsável pela interação com o usuário  
+- O jogador tenta adivinhar o número gerado pelo sistema, e cada tentativa é enviada ao daemon  
+- O daemon avalia o palpite e responde de acordo com o estado atual do jogo  
+- O jogo termina quando o número correto é adivinhado  
 
-Toda a lógica principal é executada no daemon.
 
 # Estrutura do Projeto
 
@@ -36,104 +37,147 @@ CyberAdivinha-main/
 ├── daemon             # Executável do daemon
 └── daemon.S           # Código-fonte do daemon em Assembly
 ```
-Requisitos
+## Requisitos
 Para compilar e executar o projeto, é necessário:
 
-Sistema Operacional
-Linux (Ubuntu, Debian, Fedora ou similar)
+- Sistema Operacional Linux (Ubuntu, Debian, Fedora ou similar)  
+- GCC (GNU Compiler Collection)  
+- Make  
+- Terminal (bash ou equivalente) 
 
-Ferramentas
-GCC (GNU Compiler Collection)
-
-Make
-
-Terminal (bash ou equivalente)
-
-Verificação dos Requisitos
+### Verificação dos Requisitos
 Verifique se o compilador GCC está instalado:
 
-bash
-Copiar código
+```bash
 gcc --version
+```
 Verifique se o make está disponível:
 
-bash
-Copiar código
+```bash
 make --version
+```
 Caso não estejam instalados:
 
-bash
-Copiar código
+```bash
 sudo apt update
 sudo apt install build-essential
-Compilação
-A compilação é realizada automaticamente por meio do Makefile.
+```
+
+## Como Compilar
+A compilação é feita automaticamente utilizando o Makefile.
 
 Passo 1 – Acessar o diretório do projeto
-bash
-Copiar código
+```bash
 cd CyberAdivinha-main
+```
 
 Passo 2 – Compilar o projeto
-bash
-Copiar código
+```bash
 make
-Arquivos Gerados
-Após a compilação, serão criados:
+```
+## Arquivos Gerados
 
-cliente - executável do cliente
+Após a compilação, serão gerados os seguintes arquivos:
 
-daemon - executável do daemon
+- cliente — executável do cliente  
+- daemon — executável do daemon  
 
-
-Execução:
+## Como Executar
 A execução do programa ocorre em dois terminais, pois o cliente e o daemon são processos distintos.
 
 Passo 1 – Executar o daemon
 Em um terminal:
 
-bash
-Copiar código
+```bash
 ./daemon
+```
 O daemon ficará em execução aguardando conexões do cliente.
 
 Passo 2 – Executar o cliente
 Em outro terminal:
 
-bash
-Copiar código
+```bash
 ./cliente
+```
 
 Passo 3 – Jogar
-Siga as instruções exibidas no terminal
+- Siga as instruções exibidas no terminal
+- Digite os valores solicitados
+- O jogo responderá conforme o estado controlado pelo daemon
+- O daemon deve estar em execução antes de iniciar o cliente.
 
-Digite os valores solicitados
+## Conceitos Aplicados
+- Linguagem C (cliente)
+- Assembly x86-64 (daemon)
+- Máquina de estados
+- Processos em Linux
+- Arquitetura de Computadores
+- Comunicação entre processos (sinais Unix)
+- Uso de Makefile
 
-O jogo responde conforme o estado controlado pelo daemon
+## Exemplo de Saída no Terminal
 
-O daemon deve estar em execução antes de iniciar o cliente.
+### Execução do Daemon (Assembly)
 
-Conceitos Aplicados
-Linguagem C
+```bash
+$ ./daemon
+=== Jogo: Adivinhe o Numero ===
+PID: 5284
 
-Assembly
-
-Máquina de estados
-
-Processos
-
-Arquitetura de Computadores
-
-Comunicação entre processos
-
-Uso de Makefile
-
-Disciplina: Arquitetura de Computadores
-
-Trabalho Final
+Jogo iniciado!
 ```
-Autores
-Projeto desenvolvido para fins acadêmicos.
-Diogo Costa e Marina Nascimento Veiga
-Ciencia da Computaçâo - Universidade Federal do Maranhão
+### Execução do Cliente (C)
+
+```bash
+$ ./cliente
+=== Jogo: Adivinhe o Número ===
+Informe o PID do processo daemon: 5284
+
+=====MENU=====
+1 - Acho que é maior
+2 - Acho que é menor
+3 - Reiniciar o jogo
+4 - Mostrar status do jogo
+5 - Encerrar jogo
+opcao: 1
+Jogador escolheu: MAIOR.
+```
+
+### Resposta do Daemon após palpite
+
+```text
+Dica: tente um numero MAIOR
+```
+
+### Solicitação de Status do Jogo
+Cliente:
+```bash
+opcao: 4
+Solicitacao de status enviada!
+```
+Daemon:
+```bash
+Status: jogo em execucao | aguardando palpites
+```
+
+### Exemplo de Acerto
+```bash
+Voce acertou!
+Tentativas: 7
+```
+### Encerramento do Jogo
+```text
+Encerrando jogo...
+```
+
+## Autores
+Projeto desenvolvido para fins acadêmicos por: 
+- Diogo Costa 
+- Marina Nascimento Veiga
+
+```
+Disciplina: Arquitetura de Computadores
+Ciência da Computação - Universidade Federal do Maranhão
+```
+
 
